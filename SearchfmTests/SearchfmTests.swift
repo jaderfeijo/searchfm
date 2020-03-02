@@ -1,8 +1,4 @@
 //
-//  SearchfmTests.swift
-//  SearchfmTests
-//
-//  Created by Jader Feijo on 02/03/2020.
 //  Copyright © 2020 Jader Feijo. All rights reserved.
 //
 
