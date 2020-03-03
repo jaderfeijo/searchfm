@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		9503A4DA240E4F90008AE9AB /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503A4D9240E4F90008AE9AB /* Size.swift */; };
 		9503A4DC240E4FBE008AE9AB /* ImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503A4DB240E4FBE008AE9AB /* ImageTests.swift */; };
+		9503A4DE240E52A6008AE9AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503A4DD240E52A6008AE9AB /* API.swift */; };
+		9503A4E1240E52D6008AE9AB /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503A4E0240E52D6008AE9AB /* DataProvider.swift */; };
+		9503A4E4240E542A008AE9AB /* HTTPStatusCodes in Frameworks */ = {isa = PBXBuildFile; productRef = 9503A4E3240E542A008AE9AB /* HTTPStatusCodes */; };
 		957703C7240DB0D100DD25EF /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957703C6240DB0D100DD25EF /* Album.swift */; };
 		957703CC240DB19C00DD25EF /* Lastfm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957703CB240DB19C00DD25EF /* Lastfm.swift */; };
 		95B61AFB240DB1F30031F222 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B61AFA240DB1F30031F222 /* Image.swift */; };
@@ -42,6 +45,8 @@
 /* Begin PBXFileReference section */
 		9503A4D9240E4F90008AE9AB /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		9503A4DB240E4FBE008AE9AB /* ImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTests.swift; sourceTree = "<group>"; };
+		9503A4DD240E52A6008AE9AB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9503A4E0240E52D6008AE9AB /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		957703C6240DB0D100DD25EF /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		957703CB240DB19C00DD25EF /* Lastfm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lastfm.swift; sourceTree = "<group>"; };
 		95B61AFA240DB1F30031F222 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9503A4E4240E542A008AE9AB /* HTTPStatusCodes in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9503A4DF240E52C1008AE9AB /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				9503A4E0240E52D6008AE9AB /* DataProvider.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
 		957703C4240DAF6E00DD25EF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				957703C4240DAF6E00DD25EF /* Models */,
+				9503A4DD240E52A6008AE9AB /* API.swift */,
 				957703CB240DB19C00DD25EF /* Lastfm.swift */,
 			);
 			path = LastFM;
@@ -137,6 +152,7 @@
 		95DA3FD6240DA437006073BE /* Searchfm */ = {
 			isa = PBXGroup;
 			children = (
+				9503A4DF240E52C1008AE9AB /* DataProvider */,
 				957703CA240DB18100DD25EF /* LastFM */,
 				957703C5240DAF7300DD25EF /* Views */,
 				95DA3FD7240DA437006073BE /* AppDelegate.swift */,
@@ -200,6 +216,9 @@
 			dependencies = (
 			);
 			name = Searchfm;
+			packageProductDependencies = (
+				9503A4E3240E542A008AE9AB /* HTTPStatusCodes */,
+			);
 			productName = Searchfm;
 			productReference = 95DA3FD4240DA437006073BE /* Searchfm.app */;
 			productType = "com.apple.product-type.application";
@@ -272,6 +291,9 @@
 				Base,
 			);
 			mainGroup = 95DA3FCB240DA437006073BE;
+			packageReferences = (
+				9503A4E2240E542A008AE9AB /* XCRemoteSwiftPackageReference "SwiftHTTPStatusCodes" */,
+			);
 			productRefGroup = 95DA3FD5240DA437006073BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -321,6 +343,8 @@
 				957703CC240DB19C00DD25EF /* Lastfm.swift in Sources */,
 				95DA3FDA240DA437006073BE /* SceneDelegate.swift in Sources */,
 				95DA3FDC240DA437006073BE /* SearchView.swift in Sources */,
+				9503A4E1240E52D6008AE9AB /* DataProvider.swift in Sources */,
+				9503A4DE240E52A6008AE9AB /* API.swift in Sources */,
 				957703C7240DB0D100DD25EF /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,6 +667,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9503A4E2240E542A008AE9AB /* XCRemoteSwiftPackageReference "SwiftHTTPStatusCodes" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rhodgkins/SwiftHTTPStatusCodes.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9503A4E3240E542A008AE9AB /* HTTPStatusCodes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9503A4E2240E542A008AE9AB /* XCRemoteSwiftPackageReference "SwiftHTTPStatusCodes" */;
+			productName = HTTPStatusCodes;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 95DA3FCC240DA437006073BE /* Project object */;
 }
