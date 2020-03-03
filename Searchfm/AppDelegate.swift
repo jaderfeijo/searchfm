@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Jader Feijo. All rights reserved.
+// Copyright © 2020 Jader Feijo. All rights reserved.
 //
 
 import UIKit
