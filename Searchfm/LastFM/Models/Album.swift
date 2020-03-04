@@ -45,3 +45,5 @@ extension Lastfm.Album: Decodable {
 		)
 	}
 }
+
+extension Lastfm.Album: ImageContainingEntity {}

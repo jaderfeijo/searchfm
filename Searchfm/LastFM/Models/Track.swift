@@ -49,3 +49,5 @@ extension Lastfm.Track: Decodable {
 		)
 	}
 }
+
+extension Lastfm.Track: ImageContainingEntity {}

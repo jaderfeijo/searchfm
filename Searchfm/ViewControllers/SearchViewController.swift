@@ -64,9 +64,21 @@ class SearchViewController: UITableViewController {
 		
 		cell.textLabel!.text = item.title
 		cell.detailTextLabel!.text = item.subtitle
-		cell.imageView!.image = UIImage(named: "AppIcon")!
+		cell.imageView!.image = item.imageLoader?.image ?? UIImage(named: "AppIcon")
 		
 		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		let item = viewModel.itemAt(path: indexPath)
+		item?.imageLoader?.loadImageAsync { result in
+			switch result {
+			case .success(let image):
+				cell.imageView?.image = image
+			case .failure(let error):
+				print("Error while loading image: \(error)")
+			}
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

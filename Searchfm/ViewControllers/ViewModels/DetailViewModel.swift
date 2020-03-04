@@ -43,5 +43,6 @@ extension DetailViewModel {
 		let subtitle: String
 		let url: URL
 		let itemType: Lastfm.SearchType
+		let imageLoader: AsyncImageLoader?
 	}
 }

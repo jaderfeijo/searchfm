@@ -67,7 +67,8 @@ class SearchViewModel {
 							SearchItem(
 								identifier: album.mbid,
 								title: album.name,
-								subtitle: album.artist
+								subtitle: album.artist,
+								imageLoader: album.imageLoader(forImageSize: .small)
 							)
 						}
 					case .failure(let error):
@@ -84,7 +85,8 @@ class SearchViewModel {
 							SearchItem(
 								identifier: artist.mbid,
 								title: artist.name,
-								subtitle: "\(artist.listeners) listeners"
+								subtitle: "\(artist.listeners) listeners",
+								imageLoader: artist.imageLoader(forImageSize: .small)
 							)
 						}
 					case .failure(let error):
@@ -101,7 +103,8 @@ class SearchViewModel {
 							SearchItem(
 								identifier: track.mbid,
 								title: track.name,
-								subtitle: track.artist
+								subtitle: track.artist,
+								imageLoader: track.imageLoader(forImageSize: .small)
 							)
 						}
 					case .failure(let error):
@@ -144,7 +147,8 @@ class SearchViewModel {
 				title: album.name,
 				subtitle: album.artist,
 				url: URL(string: album.url)!,
-				itemType: .album
+				itemType: .album,
+				imageLoader: album.imageLoader(forImageSize: .medium)
 			)
 		}
 		
@@ -153,7 +157,8 @@ class SearchViewModel {
 				title: artist.name,
 				subtitle: "",
 				url: URL(string: artist.url)!,
-				itemType: .artist
+				itemType: .artist,
+				imageLoader: artist.imageLoader(forImageSize: .medium)
 			)
 		}
 		
@@ -162,7 +167,8 @@ class SearchViewModel {
 				title: track.name,
 				subtitle: track.artist,
 				url: URL(string: track.url)!,
-				itemType: .track
+				itemType: .track,
+				imageLoader: track.imageLoader(forImageSize: .medium)
 			)
 		}
 		
@@ -175,7 +181,7 @@ class SearchViewModel {
 		DispatchQueue.main.async { [weak self] in
 			// In a real app, it would be better to display personalised
 			// error messages for different error types, (e.g.: if the server
-			// is not available it could be the user's internet connection
+			// is not available it could be that the user's internet connection
 			// is not active, so it would be nice to notify the user of that).
 			self?.view.displayError(
 				title: "Search Error",
@@ -196,6 +202,7 @@ extension SearchViewModel {
 		let identifier: String
 		let title: String
 		let subtitle: String
+		let imageLoader: AsyncImageLoader?
 	}
 }
 

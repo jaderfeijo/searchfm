@@ -12,6 +12,8 @@
 		9503A4E1240E52D6008AE9AB /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503A4E0240E52D6008AE9AB /* DataProvider.swift */; };
 		9503A4E4240E542A008AE9AB /* HTTPStatusCodes in Frameworks */ = {isa = PBXBuildFile; productRef = 9503A4E3240E542A008AE9AB /* HTTPStatusCodes */; };
 		9503A4E6240E57A7008AE9AB /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503A4E5240E57A7008AE9AB /* SearchResults.swift */; };
+		955836AE2410359D006220E3 /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955836AD2410359D006220E3 /* AsyncImageLoader.swift */; };
+		955836B024103B87006220E3 /* ImageContainingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955836AF24103B87006220E3 /* ImageContainingEntity.swift */; };
 		957703C7240DB0D100DD25EF /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957703C6240DB0D100DD25EF /* Album.swift */; };
 		957703CC240DB19C00DD25EF /* Lastfm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957703CB240DB19C00DD25EF /* Lastfm.swift */; };
 		958ACEAD24101A120061DF04 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958ACEAC24101A120061DF04 /* DetailViewModel.swift */; };
@@ -62,6 +64,8 @@
 		9503A4DD240E52A6008AE9AB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9503A4E0240E52D6008AE9AB /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		9503A4E5240E57A7008AE9AB /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		955836AD2410359D006220E3 /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
+		955836AF24103B87006220E3 /* ImageContainingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainingEntity.swift; sourceTree = "<group>"; };
 		957703C6240DB0D100DD25EF /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		957703CB240DB19C00DD25EF /* Lastfm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lastfm.swift; sourceTree = "<group>"; };
 		958ACEAC24101A120061DF04 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +135,14 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
+		955836AC24103589006220E3 /* Image Loader */ = {
+			isa = PBXGroup;
+			children = (
+				955836AD2410359D006220E3 /* AsyncImageLoader.swift */,
+			);
+			path = "Image Loader";
+			sourceTree = "<group>";
+		};
 		957703C4240DAF6E00DD25EF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +171,7 @@
 			children = (
 				957703C4240DAF6E00DD25EF /* Models */,
 				9503A4DD240E52A6008AE9AB /* API.swift */,
+				955836AF24103B87006220E3 /* ImageContainingEntity.swift */,
 				957703CB240DB19C00DD25EF /* Lastfm.swift */,
 			);
 			path = LastFM;
@@ -234,6 +247,7 @@
 		95DA3FD6240DA437006073BE /* Searchfm */ = {
 			isa = PBXGroup;
 			children = (
+				955836AC24103589006220E3 /* Image Loader */,
 				9503A4DF240E52C1008AE9AB /* DataProvider */,
 				957703CA240DB18100DD25EF /* LastFM */,
 				95A73A54240F61BF001BA738 /* Extensions */,
@@ -426,6 +440,7 @@
 			files = (
 				958ACEAD24101A120061DF04 /* DetailViewModel.swift in Sources */,
 				95DA3FD8240DA437006073BE /* AppDelegate.swift in Sources */,
+				955836B024103B87006220E3 /* ImageContainingEntity.swift in Sources */,
 				9503A4E6240E57A7008AE9AB /* SearchResults.swift in Sources */,
 				957703CC240DB19C00DD25EF /* Lastfm.swift in Sources */,
 				95B61AFB240DB1F30031F222 /* Image.swift in Sources */,
@@ -433,6 +448,7 @@
 				95A73A5D240F68D0001BA738 /* Track.swift in Sources */,
 				95A73A58240F66EF001BA738 /* Artist.swift in Sources */,
 				957703C7240DB0D100DD25EF /* Album.swift in Sources */,
+				955836AE2410359D006220E3 /* AsyncImageLoader.swift in Sources */,
 				95A73A74240FFBB2001BA738 /* HTTPDataProvider.swift in Sources */,
 				95DA3FDA240DA437006073BE /* SceneDelegate.swift in Sources */,
 				95A73A72240FF4EF001BA738 /* SearchViewModel.swift in Sources */,
