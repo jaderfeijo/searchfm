@@ -52,13 +52,6 @@ extension DetailTableViewController: DetailView {
 
 extension Lastfm.SearchType {
 	var displayName: String {
-		switch self {
-		case .album:
-			return "Album"
-		case .artist:
-			return "Artist"
-		case .track:
-			return "Track"
-		}
+		return "Artist"
 	}
 }
