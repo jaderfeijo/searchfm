@@ -81,7 +81,7 @@ class SearchViewController: UITableViewController {
 			
 			cell.textLabel!.text = item.title
 			cell.detailTextLabel!.text = item.subtitle
-			cell.imageView!.image = item.imageLoader?.image ?? UIImage(named: "AppIcon")
+			cell.imageView!.image = item.imageLoader?.image ?? UIImage(named: "Placeholder")
 			
 			return cell
 		case 1:
