@@ -155,7 +155,7 @@ class SearchViewModel {
 		if let artist = cachedItem as? Lastfm.Artist {
 			return DetailViewModel.Item(
 				title: artist.name,
-				subtitle: "",
+				subtitle: artist.name,
 				url: URL(string: artist.url)!,
 				itemType: .artist,
 				imageLoader: artist.imageLoader(forImageSize: .mega)
