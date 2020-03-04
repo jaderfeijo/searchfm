@@ -82,6 +82,7 @@ class SearchViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
 		guard let item = viewModel.itemAt(path: indexPath) else {
 			fatalError("Invalid item index '\(indexPath.row)'")
 		}
