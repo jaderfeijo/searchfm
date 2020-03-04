@@ -49,36 +49,68 @@ class SearchViewController: UITableViewController {
 	
 	// MARK: - Table View -
 	
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		if viewModel.shouldDisplayLoadingIndicator {
+			return 2
+		} else {
+			return 1
+		}
+	}
+	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.searchResults.count
+		switch section {
+		case 0:
+			return viewModel.searchResults.count
+		case 1:
+			return 1
+		default:
+			fatalError("Invalid section index: \(section)")
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchItemCell") else {
-			fatalError("Unable to create cell with identifier: 'SearchItemCell'")
+		switch indexPath.section {
+		case 0:
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchItemCell") else {
+				fatalError("Unable to create cell with identifier: 'SearchItemCell'")
+			}
+			
+			guard let item = viewModel.itemAt(path: indexPath) else {
+				fatalError("Failed to retrieve search result item for index path: \(indexPath)")
+			}
+			
+			cell.textLabel!.text = item.title
+			cell.detailTextLabel!.text = item.subtitle
+			cell.imageView!.image = item.imageLoader?.image ?? UIImage(named: "AppIcon")
+			
+			return cell
+		case 1:
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell") else {
+				fatalError("Unable to create cell with identifier: 'LoadingCell'")
+			}
+			return cell
+		default:
+			fatalError("Invalid section index: \(indexPath.section)")
 		}
-		
-		guard let item = viewModel.itemAt(path: indexPath) else {
-			fatalError("Failed to retrieve search result item for index path: \(indexPath)")
-		}
-		
-		cell.textLabel!.text = item.title
-		cell.detailTextLabel!.text = item.subtitle
-		cell.imageView!.image = item.imageLoader?.image ?? UIImage(named: "AppIcon")
-		
-		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-		let item = viewModel.itemAt(path: indexPath)
-		item?.imageLoader?.loadImageAsync { result in
-			switch result {
-			case .success(let image):
-				cell.imageView?.image = image
-				cell.setNeedsLayout()
-			case .failure(let error):
-				print("Error while loading image: \(error)")
+		switch indexPath.section {
+		case 0:
+			let item = viewModel.itemAt(path: indexPath)
+			item?.imageLoader?.loadImageAsync { result in
+				switch result {
+				case .success(let image):
+					cell.imageView?.image = image
+					cell.setNeedsLayout()
+				case .failure(let error):
+					print("Error while loading image: \(error)")
+				}
 			}
+		case 1:
+			viewModel.loadMoreResults()
+		default:
+			fatalError("Invalid section index: \(indexPath.section)")
 		}
 	}
 	
