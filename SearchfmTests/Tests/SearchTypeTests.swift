@@ -29,11 +29,23 @@ class SearchTypeTests: XCTestCase {
 	}
 	
 	func testInitFromModelTypeSucceeds() {
-		XCTFail("Not yet implemented")
+		XCTAssertEqual(try! Lastfm.SearchType(from: Lastfm.Album.self), .album)
+		XCTAssertEqual(try! Lastfm.SearchType(from: Lastfm.Artist.self), .artist)
+		XCTAssertEqual(try! Lastfm.SearchType(from: Lastfm.Track.self), .track)
 	}
 	
 	func testInitFromModelTypeFailsWhenModelIsNotSupported() {
-		XCTFail("Not yet implemented")
+		do {
+			let _ = try Lastfm.SearchType(from: UnsupportedModel.self)
+			XCTFail("Expected an exception to be thrown")
+		} catch let error {
+			switch error {
+			case Lastfm.SearchType.Error.unknownModel(let type):
+				XCTAssert(type == UnsupportedModel.self)
+			default:
+				XCTFail("Unexpected error: '\(error)'")
+			}
+		}
 	}
 }
 
