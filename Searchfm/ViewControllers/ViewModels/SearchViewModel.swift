@@ -273,6 +273,10 @@ extension Lastfm.API: PaginatedEntitySearchProvider {}
 
 extension SearchViewModel.SearchItem: Equatable {
 	static func == (lhs: SearchViewModel.SearchItem, rhs: SearchViewModel.SearchItem) -> Bool {
-		return lhs.identifier == rhs.identifier
+		return (
+			lhs.identifier == rhs.identifier &&
+			lhs.title == rhs.title &&
+			lhs.subtitle == rhs.subtitle
+		)
 	}
 }
