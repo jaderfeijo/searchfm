@@ -32,24 +32,7 @@ extension Lastfm.Album: Decodable {
 		let artist = try container.decode(String.self, forKey: .artist)
 		let url = try container.decode(String.self, forKey: .url)
 		let image = try container.decodeIfPresent([Image].self, forKey: .image) ?? []
-		
-		// the code below is necessary because Lastfm provides us with a boolean as an
-		// integer inside a string (e.g.: `"0"`). Unfortunately Swift's built in
-		// JSONDecoder does not consider this automatically as a `Bool` if we try to
-		// parse it directly, so we need to convert it, and throw an appropriate error
-		// if the parsing fails.
-		let streamableString = try container.decode(String.self, forKey: .streamable)
-		guard let streamableInt = Int(streamableString) else {
-			throw DecodingError.valueNotFound(
-				Bool.self,
-				DecodingError.Context(
-					codingPath: [CodingKeys.streamable],
-					debugDescription: "Failed to parse a Bool from 'streamable' value: '\(streamableString)'."
-				)
-			)
-		}
-		let streamable = Bool(truncating: streamableInt as NSNumber)
-		
+		let streamable = try container.decodeStringAsBool(forKey: .streamable)
 		let mbid = try container.decode(String.self, forKey: .mbid)
 		
 		self.init(

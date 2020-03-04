@@ -14,3 +14,20 @@ extension Lastfm {
 		}
 	}
 }
+
+extension Lastfm.API {
+	enum Error: Swift.Error {
+		case serviceUnreachable
+		case serviceError
+		case unknown
+	}
+	
+	typealias Response<T> = (Result<T, Error>) -> Void
+}
+
+// MARK: - Album Search -
+
+extension Lastfm.API {
+	
+	//func searchAlbum(named albumName: String, callback: Response<[Album]>)
+}
