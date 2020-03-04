@@ -26,6 +26,29 @@ class SearchViewController: UITableViewController {
 		viewModel.view = self
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		searchBar.becomeFirstResponder()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+		switch segue.identifier {
+		case "ShowDetail":
+			guard let detailViewController = segue.destination as? DetailTableViewController else {
+				fatalError("Invalid destination view controller type '\(segue.destination)' for segue '\(String(describing: segue.identifier))'")
+			}
+			guard let item = sender as? DetailViewModel.Item else {
+				fatalError("Invalid item '\(String(describing: sender))'")
+			}
+			detailViewController.viewModel = DetailViewModel(item: item)
+		default:
+			fatalError("Unknown segue '\(String(describing: segue.identifier))'")
+		}
+	}
+	
+	// MARK: - Table View -
+	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return viewModel.searchResults.count
 	}
@@ -47,7 +70,10 @@ class SearchViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		fatalError("Not yet implemented")
+		guard let item = viewModel.itemAt(path: indexPath) else {
+			fatalError("Invalid item index '\(indexPath.row)'")
+		}
+		viewModel.selectItem(item)
 	}
 }
 
@@ -75,8 +101,11 @@ extension SearchViewController: SearchView {
 		present(alertController, animated: true, completion: nil)
 	}
 	
-	func navigate(to: SearchViewModel.NavigationDestination) {
-		fatalError("Not yet implemented")
+	func navigate(to destination: SearchViewModel.NavigationDestination) {
+		switch destination {
+		case .detail(let item):
+			performSegue(withIdentifier: "ShowDetail", sender: item)
+		}
 	}
 }
 

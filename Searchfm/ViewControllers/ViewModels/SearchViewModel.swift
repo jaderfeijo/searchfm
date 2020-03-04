@@ -8,7 +8,7 @@ import Dispatch
 protocol SearchView: class {
 	func updateView()
 	func displayError(title: String, message: String)
-	func navigate(to: SearchViewModel.NavigationDestination)
+	func navigate(to destination: SearchViewModel.NavigationDestination)
 }
 
 protocol PaginatedEntitySearchProvider {
@@ -43,6 +43,7 @@ class SearchViewModel {
 		}
 	}
 	
+	private var cachedResults: [Decodable]? = nil
 	private var previousTask: Cancellable? = nil
 	
 	func search(for terms: String, type: Lastfm.SearchType) {
@@ -61,6 +62,7 @@ class SearchViewModel {
 					self?.previousTask = nil
 					switch result {
 					case .success(let results):
+						self?.cachedResults = results.results
 						self?.searchResults = results.results.map { album in
 							SearchItem(
 								identifier: album.mbid,
@@ -77,6 +79,7 @@ class SearchViewModel {
 					self?.previousTask = nil
 					switch result {
 					case .success(let results):
+						self?.cachedResults = results.results
 						self?.searchResults = results.results.map { artist in
 							SearchItem(
 								identifier: artist.mbid,
@@ -93,6 +96,7 @@ class SearchViewModel {
 					self?.previousTask = nil
 					switch result {
 					case .success(let results):
+						self?.cachedResults = results.results
 						self?.searchResults = results.results.map { track in
 							SearchItem(
 								identifier: track.mbid,
@@ -116,11 +120,50 @@ class SearchViewModel {
 	}
 	
 	func selectItem(_ item: SearchItem) {
-		view.navigate(to: .detail(item))
+		view.navigate(
+			to: .detail(
+				detailItem(for: item)
+			)
+		)
 	}
 	
 	func itemAt(path: IndexPath) -> SearchItem? {
 		return searchResults[path.row]
+	}
+	
+	func detailItem(for item: SearchItem) -> DetailViewModel.Item {
+		guard let index = searchResults.firstIndex(of: item) else {
+			fatalError("Item '\(item)' not found")
+		}
+		
+		let cachedItem = cachedResults![index]
+		
+		#warning("TODO: Move URL parsing to the model level")
+		if let album =  cachedItem as? Lastfm.Album {
+			return DetailViewModel.Item(
+				title: album.name,
+				subtitle: album.artist,
+				url: URL(string: album.url)!
+			)
+		}
+		
+		if let artist = cachedItem as? Lastfm.Artist {
+			return DetailViewModel.Item(
+				title: artist.name,
+				subtitle: "",
+				url: URL(string: artist.url)!
+			)
+		}
+		
+		if let track = cachedItem as? Lastfm.Track {
+			return DetailViewModel.Item(
+				title: track.name,
+				subtitle: track.artist,
+				url: URL(string: track.url)!
+			)
+		}
+		
+		fatalError("Unknown entity type: '\(cachedItem)'")
 	}
 	
 	// MARK: - Private -
@@ -141,7 +184,7 @@ class SearchViewModel {
 
 extension SearchViewModel {
 	enum NavigationDestination {
-		case detail(SearchItem)
+		case detail(DetailViewModel.Item)
 	}
 }
 
@@ -154,3 +197,9 @@ extension SearchViewModel {
 }
 
 extension Lastfm.API: PaginatedEntitySearchProvider {}
+
+extension SearchViewModel.SearchItem: Equatable {
+	static func == (lhs: SearchViewModel.SearchItem, rhs: SearchViewModel.SearchItem) -> Bool {
+		return lhs.identifier == rhs.identifier
+	}
+}
