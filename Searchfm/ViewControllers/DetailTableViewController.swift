@@ -38,8 +38,7 @@ class DetailTableViewController: UITableViewController {
 
 extension DetailTableViewController: DetailView {
 	func updateView() {
-		#warning("TODO: Change to actual image")
-		imageView.image = UIImage(named: "AppIcon")
+		imageView.image = viewModel.item.imageLoader?.image ?? UIImage(named: "AppIcon")
 		titleLabel.text = viewModel.item.title
 		subtitleTitleLabel.text = viewModel.item.itemType.displayName
 		subtitleValueLabel.text = viewModel.item.subtitle

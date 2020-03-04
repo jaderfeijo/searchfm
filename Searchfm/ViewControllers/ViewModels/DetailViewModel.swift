@@ -30,6 +30,9 @@ class DetailViewModel {
 	
 	func willDisplay() {
 		view.updateView()
+		item.imageLoader?.loadImageAsync { _ in
+			self.view.updateView()
+		}
 	}
 	
 	func selectOpenInLastFM() {
