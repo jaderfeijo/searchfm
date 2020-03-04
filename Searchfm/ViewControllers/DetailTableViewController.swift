@@ -3,8 +3,14 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailTableViewController: UITableViewController {
+	
+	@IBOutlet var imageView: UIImageView!
+	@IBOutlet var titleLabel: UILabel!
+	@IBOutlet var subtitleTitleLabel: UILabel!
+	@IBOutlet var subtitleValueLabel: UILabel!
 	
 	/// The view model instance for this view controller.
 	///
@@ -19,15 +25,41 @@ class DetailTableViewController: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		viewModel.willDisplay()
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		if indexPath.section == 1 && indexPath.row == 0 {
+			viewModel.selectOpenInLastFM()
+		}
 	}
 }
 
 extension DetailTableViewController: DetailView {
 	func updateView() {
-		fatalError("Not yet implemented")
+		#warning("TODO: Change to actual image")
+		imageView.image = UIImage(named: "AppIcon")
+		titleLabel.text = viewModel.item.title
+		subtitleTitleLabel.text = viewModel.item.itemType.displayName
+		subtitleValueLabel.text = viewModel.item.subtitle
 	}
 	
 	func openURL(_ url: URL) {
-		fatalError("Not yet implemented")
+		let browserViewController = SFSafariViewController(url: url)
+		self.present(browserViewController, animated: true, completion: nil)
+	}
+}
+
+extension Lastfm.SearchType {
+	var displayName: String {
+		switch self {
+		case .album:
+			return "Album"
+		case .artist:
+			return "Artist"
+		case .track:
+			return "Track"
+		}
 	}
 }

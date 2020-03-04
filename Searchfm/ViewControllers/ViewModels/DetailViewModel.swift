@@ -27,6 +27,14 @@ class DetailViewModel {
 	init(item: Item) {
 		self.item = item
 	}
+	
+	func willDisplay() {
+		view.updateView()
+	}
+	
+	func selectOpenInLastFM() {
+		view.openURL(item.url)
+	}
 }
 
 extension DetailViewModel {
@@ -34,5 +42,6 @@ extension DetailViewModel {
 		let title: String
 		let subtitle: String
 		let url: URL
+		let itemType: Lastfm.SearchType
 	}
 }

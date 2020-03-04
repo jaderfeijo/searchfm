@@ -143,7 +143,8 @@ class SearchViewModel {
 			return DetailViewModel.Item(
 				title: album.name,
 				subtitle: album.artist,
-				url: URL(string: album.url)!
+				url: URL(string: album.url)!,
+				itemType: .album
 			)
 		}
 		
@@ -151,7 +152,8 @@ class SearchViewModel {
 			return DetailViewModel.Item(
 				title: artist.name,
 				subtitle: "",
-				url: URL(string: artist.url)!
+				url: URL(string: artist.url)!,
+				itemType: .artist
 			)
 		}
 		
@@ -159,7 +161,8 @@ class SearchViewModel {
 			return DetailViewModel.Item(
 				title: track.name,
 				subtitle: track.artist,
-				url: URL(string: track.url)!
+				url: URL(string: track.url)!,
+				itemType: .track
 			)
 		}
 		
