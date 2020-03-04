@@ -6,11 +6,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="gna-am-0vo">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20P-2H-nBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tableViewController id="R7j-Wn-iTr" customClass="SearchViewController" customModule="Searchfm" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="R7j-Wn-iTr" userLabel="Search View Controller" customClass="SearchViewController" customModule="Searchfm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W9E-VL-cjV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,55 +24,46 @@
                                 <string>Artist</string>
                                 <string>Track</string>
                             </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="R7j-Wn-iTr" id="83o-ED-5lo"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SearchItemCell" rowHeight="60" id="S4A-rJ-HjK" customClass="SearchItemTableViewCell" customModule="Searchfm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="414" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchItemCell" textLabel="ocf-0H-h5s" detailTextLabel="lf8-Dt-VH7" style="IBUITableViewCellStyleSubtitle" id="jp0-66-xaJ">
+                                <rect key="frame" x="0.0" y="84" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S4A-rJ-HjK" id="Emf-FO-JKR">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="60"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jp0-66-xaJ" id="p3A-h2-nGA">
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="55.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WCq-2Y-pbP">
-                                            <rect key="frame" x="4" y="4" width="50" height="52"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="2gL-fz-Fsj"/>
-                                                <constraint firstAttribute="width" constant="50" id="rw2-jB-mgE"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80P-4Z-bL7">
-                                            <rect key="frame" x="62" y="4" width="35.5" height="21"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ocf-0H-h5s">
+                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdy-YR-Bzn">
-                                            <rect key="frame" x="62" y="28" width="38" height="18"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lf8-Dt-VH7">
+                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="80P-4Z-bL7" secondAttribute="trailing" constant="4" id="0ZL-Oz-FB4"/>
-                                        <constraint firstItem="WCq-2Y-pbP" firstAttribute="leading" secondItem="Emf-FO-JKR" secondAttribute="leading" constant="4" id="1xL-lQ-lU9"/>
-                                        <constraint firstItem="WCq-2Y-pbP" firstAttribute="top" secondItem="Emf-FO-JKR" secondAttribute="top" constant="4" id="8JO-4g-on4"/>
-                                        <constraint firstAttribute="bottom" secondItem="WCq-2Y-pbP" secondAttribute="bottom" constant="4" id="Iw6-2Z-wPc"/>
-                                        <constraint firstItem="bdy-YR-Bzn" firstAttribute="top" secondItem="80P-4Z-bL7" secondAttribute="bottom" constant="3" id="Od6-qd-AUb"/>
-                                        <constraint firstItem="bdy-YR-Bzn" firstAttribute="leading" secondItem="WCq-2Y-pbP" secondAttribute="trailing" constant="8" id="TZ5-Tv-Utp"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bdy-YR-Bzn" secondAttribute="trailing" constant="4" id="avN-z2-xAY"/>
-                                        <constraint firstItem="80P-4Z-bL7" firstAttribute="top" secondItem="Emf-FO-JKR" secondAttribute="top" constant="4" id="gKG-ue-ZOi"/>
-                                        <constraint firstItem="80P-4Z-bL7" firstAttribute="leading" secondItem="WCq-2Y-pbP" secondAttribute="trailing" constant="8" id="leX-VL-qwj"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="R7j-Wn-iTr" id="1PN-Sd-1On"/>
                             <outlet property="delegate" destination="R7j-Wn-iTr" id="fJO-7G-64a"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Ty0-jH-fDY"/>
+                    <navigationItem key="navigationItem" title="Search" id="Ty0-jH-fDY"/>
+                    <connections>
+                        <outlet property="searchBar" destination="n1s-rQ-drX" id="4be-65-eEB"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="94.419642857142847"/>

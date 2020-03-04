@@ -23,7 +23,8 @@
 		95A73A63240F70DB001BA738 /* TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A73A62240F70DB001BA738 /* TrackTests.swift */; };
 		95A73A6A240FEA2F001BA738 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A73A69240FEA2F001BA738 /* SearchViewController.swift */; };
 		95A73A6E240FEB5F001BA738 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A73A6D240FEB5F001BA738 /* Main.storyboard */; };
-		95A73A70240FED36001BA738 /* SearchItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A73A6F240FED36001BA738 /* SearchItemTableViewCell.swift */; };
+		95A73A72240FF4EF001BA738 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A73A71240FF4EF001BA738 /* SearchViewModel.swift */; };
+		95A73A74240FFBB2001BA738 /* HTTPDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A73A73240FFBB2001BA738 /* HTTPDataProvider.swift */; };
 		95B61AFB240DB1F30031F222 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B61AFA240DB1F30031F222 /* Image.swift */; };
 		95D9808D240F5BAE00E28373 /* SearchResultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D9808C240F5BAE00E28373 /* SearchResultsTests.swift */; };
 		95D9808F240F5C5D00E28373 /* AlbumSearchResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 95D9808E240F5C5D00E28373 /* AlbumSearchResults.json */; };
@@ -70,7 +71,8 @@
 		95A73A62240F70DB001BA738 /* TrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTests.swift; sourceTree = "<group>"; };
 		95A73A69240FEA2F001BA738 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		95A73A6D240FEB5F001BA738 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		95A73A6F240FED36001BA738 /* SearchItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemTableViewCell.swift; sourceTree = "<group>"; };
+		95A73A71240FF4EF001BA738 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		95A73A73240FFBB2001BA738 /* HTTPDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataProvider.swift; sourceTree = "<group>"; };
 		95B61AFA240DB1F30031F222 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		95D9808C240F5BAE00E28373 /* SearchResultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTests.swift; sourceTree = "<group>"; };
 		95D9808E240F5C5D00E28373 /* AlbumSearchResults.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AlbumSearchResults.json; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				9503A4E0240E52D6008AE9AB /* DataProvider.swift */,
+				95A73A73240FFBB2001BA738 /* HTTPDataProvider.swift */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -141,7 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				95A73A69240FEA2F001BA738 /* SearchViewController.swift */,
-				95A73A6F240FED36001BA738 /* SearchItemTableViewCell.swift */,
+				95A73A71240FF4EF001BA738 /* SearchViewModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -413,9 +416,10 @@
 				95B61AFB240DB1F30031F222 /* Image.swift in Sources */,
 				95A73A5D240F68D0001BA738 /* Track.swift in Sources */,
 				95A73A58240F66EF001BA738 /* Artist.swift in Sources */,
-				95A73A70240FED36001BA738 /* SearchItemTableViewCell.swift in Sources */,
 				957703C7240DB0D100DD25EF /* Album.swift in Sources */,
+				95A73A74240FFBB2001BA738 /* HTTPDataProvider.swift in Sources */,
 				95DA3FDA240DA437006073BE /* SceneDelegate.swift in Sources */,
+				95A73A72240FF4EF001BA738 /* SearchViewModel.swift in Sources */,
 				95A73A6A240FEA2F001BA738 /* SearchViewController.swift in Sources */,
 				95A73A56240F61F6001BA738 /* JSONDecoder+Parsing.swift in Sources */,
 				9503A4E1240E52D6008AE9AB /* DataProvider.swift in Sources */,

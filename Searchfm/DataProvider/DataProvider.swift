@@ -19,23 +19,27 @@ enum Method: String {
 struct Request {
 	let method: Method
 	let url: URL
-	let headers: [String:String]? = nil
-	let body: Data? = nil
+	let headers: [String:String]?
 }
 
 struct Response {
 	let response: HTTPStatusCode
-	let data: Data? = nil
+	let data: Data?
 }
 
 enum DataProviderError: Swift.Error {
 	case serviceUnreachable
+	case serviceError(HTTPStatusCode)
 	case unknown(Swift.Error?)
+}
+
+protocol Cancellable {
+	func cancel()
 }
 
 protocol DataProvider {
 	
 	typealias AsyncResponse = (Result<Response, DataProviderError>) -> Void
 	
-	func performRequest(_ request: Request, response: AsyncResponse) -> Void
+	func performRequest(_ request: Request, callback: @escaping AsyncResponse) -> Cancellable
 }
