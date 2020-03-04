@@ -94,6 +94,10 @@ extension SearchViewController: UISearchBarDelegate {
 		viewModel.search(for: searchText, type: selectedSearchType)
 	}
 	
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.resignFirstResponder()
+	}
+	
 	func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
 		guard let searchText = searchBar.searchTextField.text else {
 			return
