@@ -4,14 +4,25 @@
 
 import Foundation
 
-extension Lastfm.Album {
+extension Lastfm {
 	struct Image {
 		let url: String
 		let size: Size
 	}
 }
 
-extension Lastfm.Album.Image: Decodable {
+extension Lastfm.Image {
+	enum Size: String, Decodable {
+		case small = "small"
+		case medium = "medium"
+		case large = "large"
+		case extraLarge = "extralarge"
+		case mega = "mega"
+	}
+}
+
+
+extension Lastfm.Image: Decodable {
 	enum CodingKeys: String, CodingKey {
 		case url = "#text"
 		case size = "size"
@@ -21,7 +32,7 @@ extension Lastfm.Album.Image: Decodable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.init(
 			url: try container.decode(String.self, forKey: .url),
-			size: try container.decode(Lastfm.Album.Image.Size.self, forKey: .size)
+			size: try container.decode(Lastfm.Image.Size.self, forKey: .size)
 		)
 	}
 }

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import HTTPStatusCodes
 
 extension Lastfm {
 	class API {
@@ -18,7 +19,7 @@ extension Lastfm {
 extension Lastfm.API {
 	enum Error: Swift.Error {
 		case serviceUnreachable
-		case serviceError
+		case serviceError(HTTPStatusCode)
 		case unknown
 	}
 	
@@ -28,6 +29,7 @@ extension Lastfm.API {
 // MARK: - Album Search -
 
 extension Lastfm.API {
-	
-	//func searchAlbum(named albumName: String, callback: Response<[Album]>)
+	func search<T: Decodable>(_ terms: String, page: Int = 1, callback: Response<[Lastfm.SearchResults<T>]>) {
+		fatalError("Not yet implemented")
+	}
 }

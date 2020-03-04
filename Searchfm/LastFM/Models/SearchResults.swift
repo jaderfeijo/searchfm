@@ -18,7 +18,7 @@ extension Lastfm {
 /// and some even having keys that are dynamic based on the entity type
 /// that is being searched we have to jump through a few hoops to parse
 /// the `SearchResults` model, especially if we want to continue to use
-/// it as a generic type in order to reduce repetition.
+/// it as a generic type in order to reduce code repetition.
 ///
 /// From what I could see, the JSON is structured in this way due to
 /// conformance to the OpenSearch API standard. An alternative would've
@@ -29,7 +29,7 @@ extension Lastfm {
 /// custom approach below.
 
 extension Lastfm.SearchResults: Decodable {
-	enum CodingKeys<T> {
+	enum CodingKeys<T: Decodable> {
 		case page
 		case totalResults
 		case results
@@ -63,48 +63,20 @@ extension Lastfm.SearchResults: Decodable {
 		)
 		
 		self.init(
-			totalResults: try resultsContainer.decodeStringAsInt(forKey: .totalResults),
-			page: try openSearchQueryContainer.decodeStringAsInt(forKey: .page),
+			totalResults: try resultsContainer.decodeStringAsInt(forKey: .totalResults) ?? 0,
+			page: try openSearchQueryContainer.decodeStringAsInt(forKey: .page) ?? 0,
 			results: try matchesContainer.decode([T].self, forKey: .item)
 		)
 	}
 }
 
-/// In the code below we define an enum, `SearchType`, which
-/// describes the different searchable entities that are
-/// supported. The actual type of the search is then inferred
-/// from the generic type of `SearchResults.CodingKeys` and
-/// mapped to the correct enum inside the `searchType` property.
-/// Finally, the `rawValue` of `SearchType` is interpolated into
-/// the key name for the keys that require it.
-///
-/// This means that whenever new search types need to be
-/// supported, the `SearchType` enum needs to
-/// be updated to include the new type, and the `searchType`
-/// variable must be updated in order to map the generic type
-/// to the appropriate `SearchType` so that key names can be
-/// parsed correctly.
-///
-/// The code responsible for mapping the generic type to
-/// a `SearchType` below triggeres a `fatalError` if the
-/// mapping fails. This is due to the fact that such a
-/// failure would be considered a programming error that
-/// needs to be caught at debug time, hence the need to
-/// bring this to the attention of the developer.
-
-extension Lastfm {
-	enum SearchType: String {
-		case album = "album"
-	}
-}
-
 extension Lastfm.SearchResults.CodingKeys: CodingKey {
 	var searchType: Lastfm.SearchType {
-		if T.self == Lastfm.Album.self {
-			return .album
-		} else {
-			fatalError("Unknown model type '\(T.self)'")
-		}
+		// Failure to map a model type (`T`) to a `SearchType`
+		// would be considered a programming error and should
+		// halt the execution of the program immediately,
+		// hence the force unwrap.
+		return try! Lastfm.SearchType(from: T.self)
 	}
 	
 	var stringValue: String {

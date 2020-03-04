@@ -5,9 +5,9 @@
 import Foundation
 
 extension Lastfm {
-	struct Album {
+	struct Artist {
 		let name: String
-		let artist: String
+		let listeners: Int
 		let url: String
 		let image: [Image]
 		let streamable: Bool
@@ -15,10 +15,10 @@ extension Lastfm {
 	}
 }
 
-extension Lastfm.Album: Decodable {
+extension Lastfm.Artist: Decodable {
 	enum CodingKeys: String, CodingKey {
 		case name = "name"
-		case artist = "artist"
+		case listeners = "listeners"
 		case url = "url"
 		case image = "image"
 		case streamable = "streamable"
@@ -29,7 +29,7 @@ extension Lastfm.Album: Decodable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		
 		let name = try container.decode(String.self, forKey: .name)
-		let artist = try container.decode(String.self, forKey: .artist)
+		let listeners = try container.decodeStringAsInt(forKey: .listeners) ?? 0
 		let url = try container.decode(String.self, forKey: .url)
 		let image = try container.decodeIfPresent([Lastfm.Image].self, forKey: .image) ?? []
 		let streamable = try container.decodeStringAsBool(forKey: .streamable) ?? false
@@ -37,7 +37,7 @@ extension Lastfm.Album: Decodable {
 		
 		self.init(
 			name: name,
-			artist: artist,
+			listeners: listeners,
 			url: url,
 			image: image,
 			streamable: streamable,
