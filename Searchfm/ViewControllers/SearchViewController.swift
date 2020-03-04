@@ -75,6 +75,7 @@ class SearchViewController: UITableViewController {
 			switch result {
 			case .success(let image):
 				cell.imageView?.image = image
+				cell.setNeedsLayout()
 			case .failure(let error):
 				print("Error while loading image: \(error)")
 			}
@@ -82,10 +83,13 @@ class SearchViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		searchBar.resignFirstResponder()
 		tableView.deselectRow(at: indexPath, animated: true)
+		
 		guard let item = viewModel.itemAt(path: indexPath) else {
 			fatalError("Invalid item index '\(indexPath.row)'")
 		}
+		
 		viewModel.selectItem(item)
 	}
 }
