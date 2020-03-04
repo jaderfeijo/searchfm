@@ -36,3 +36,20 @@ extension Lastfm.Image: Decodable {
 		)
 	}
 }
+
+extension Lastfm.Image.Size {
+	var oneSmaller: Lastfm.Image.Size? {
+		switch self {
+		case .mega:
+			return .extraLarge
+		case .extraLarge:
+			return .large
+		case .large:
+			return .medium
+		case .medium:
+			return .small
+		case .small:
+			return nil
+		}
+	}
+}

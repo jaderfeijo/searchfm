@@ -10,7 +10,17 @@ protocol ImageContainingEntity {
 
 extension ImageContainingEntity {
 	func imageOfSize(_ size: Lastfm.Image.Size) -> Lastfm.Image? {
-		return image.first { $0.size == size }
+		var nextSize: Lastfm.Image.Size? = size
+		var largestImage: Lastfm.Image? = nil
+		
+		repeat {
+			if let size = nextSize {
+				largestImage = image.first(where: { $0.size == size})
+				nextSize = size.oneSmaller
+			}
+		} while largestImage == nil
+		
+		return largestImage
 	}
 	
 	func imageLoader(forImageSize size: Lastfm.Image.Size) -> AsyncImageLoader? {

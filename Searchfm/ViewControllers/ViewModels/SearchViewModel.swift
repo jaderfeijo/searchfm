@@ -148,7 +148,7 @@ class SearchViewModel {
 				subtitle: album.artist,
 				url: URL(string: album.url)!,
 				itemType: .album,
-				imageLoader: album.imageLoader(forImageSize: .medium)
+				imageLoader: album.imageLoader(forImageSize: .mega)
 			)
 		}
 		
@@ -158,7 +158,7 @@ class SearchViewModel {
 				subtitle: "",
 				url: URL(string: artist.url)!,
 				itemType: .artist,
-				imageLoader: artist.imageLoader(forImageSize: .medium)
+				imageLoader: artist.imageLoader(forImageSize: .mega)
 			)
 		}
 		
@@ -168,7 +168,7 @@ class SearchViewModel {
 				subtitle: track.artist,
 				url: URL(string: track.url)!,
 				itemType: .track,
-				imageLoader: track.imageLoader(forImageSize: .medium)
+				imageLoader: track.imageLoader(forImageSize: .mega)
 			)
 		}
 		
