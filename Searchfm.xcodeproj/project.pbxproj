@@ -38,19 +38,11 @@
 		95DA3FDE240DA43A006073BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95DA3FDD240DA43A006073BE /* Assets.xcassets */; };
 		95DA3FE1240DA43A006073BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95DA3FE0240DA43A006073BE /* Preview Assets.xcassets */; };
 		95DA3FE4240DA43A006073BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95DA3FE2240DA43A006073BE /* LaunchScreen.storyboard */; };
-		95DA3FFA240DA43A006073BE /* SearchfmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DA3FF9240DA43A006073BE /* SearchfmUITests.swift */; };
 		95F6BF95240DB43500B7FCEF /* AlbumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F6BF94240DB43500B7FCEF /* AlbumTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		95DA3FEB240DA43A006073BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 95DA3FCC240DA437006073BE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95DA3FD3240DA437006073BE;
-			remoteInfo = Searchfm;
-		};
-		95DA3FF6240DA43A006073BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 95DA3FCC240DA437006073BE /* Project object */;
 			proxyType = 1;
@@ -94,9 +86,6 @@
 		95DA3FE5240DA43A006073BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95DA3FEA240DA43A006073BE /* SearchfmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchfmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95DA3FF0240DA43A006073BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95DA3FF5240DA43A006073BE /* SearchfmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchfmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95DA3FF9240DA43A006073BE /* SearchfmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchfmUITests.swift; sourceTree = "<group>"; };
-		95DA3FFB240DA43A006073BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95F6BF94240DB43500B7FCEF /* AlbumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,13 +99,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		95DA3FE7240DA43A006073BE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95DA3FF2240DA43A006073BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -228,7 +210,6 @@
 			children = (
 				95DA3FD6240DA437006073BE /* Searchfm */,
 				95DA3FED240DA43A006073BE /* SearchfmTests */,
-				95DA3FF8240DA43A006073BE /* SearchfmUITests */,
 				95DA3FD5240DA437006073BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -239,7 +220,6 @@
 			children = (
 				95DA3FD4240DA437006073BE /* Searchfm.app */,
 				95DA3FEA240DA43A006073BE /* SearchfmTests.xctest */,
-				95DA3FF5240DA43A006073BE /* SearchfmUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,15 +257,6 @@
 				95DA3FF0240DA43A006073BE /* Info.plist */,
 			);
 			path = SearchfmTests;
-			sourceTree = "<group>";
-		};
-		95DA3FF8240DA43A006073BE /* SearchfmUITests */ = {
-			isa = PBXGroup;
-			children = (
-				95DA3FF9240DA43A006073BE /* SearchfmUITests.swift */,
-				95DA3FFB240DA43A006073BE /* Info.plist */,
-			);
-			path = SearchfmUITests;
 			sourceTree = "<group>";
 		};
 		95DA4007240DA7EB006073BE /* Resources */ = {
@@ -340,24 +311,6 @@
 			productReference = 95DA3FEA240DA43A006073BE /* SearchfmTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		95DA3FF4240DA43A006073BE /* SearchfmUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95DA4004240DA43A006073BE /* Build configuration list for PBXNativeTarget "SearchfmUITests" */;
-			buildPhases = (
-				95DA3FF1240DA43A006073BE /* Sources */,
-				95DA3FF2240DA43A006073BE /* Frameworks */,
-				95DA3FF3240DA43A006073BE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				95DA3FF7240DA43A006073BE /* PBXTargetDependency */,
-			);
-			name = SearchfmUITests;
-			productName = SearchfmUITests;
-			productReference = 95DA3FF5240DA43A006073BE /* SearchfmUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -372,10 +325,6 @@
 						CreatedOnToolsVersion = 11.3.1;
 					};
 					95DA3FE9240DA43A006073BE = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = 95DA3FD3240DA437006073BE;
-					};
-					95DA3FF4240DA43A006073BE = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = 95DA3FD3240DA437006073BE;
 					};
@@ -399,7 +348,6 @@
 			targets = (
 				95DA3FD3240DA437006073BE /* Searchfm */,
 				95DA3FE9240DA43A006073BE /* SearchfmTests */,
-				95DA3FF4240DA43A006073BE /* SearchfmUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -421,13 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D9808F240F5C5D00E28373 /* AlbumSearchResults.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95DA3FF3240DA43A006073BE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,14 +415,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95DA3FF1240DA43A006073BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				95DA3FFA240DA43A006073BE /* SearchfmUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -489,11 +422,6 @@
 			isa = PBXTargetDependency;
 			target = 95DA3FD3240DA437006073BE /* Searchfm */;
 			targetProxy = 95DA3FEB240DA43A006073BE /* PBXContainerItemProxy */;
-		};
-		95DA3FF7240DA43A006073BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95DA3FD3240DA437006073BE /* Searchfm */;
-			targetProxy = 95DA3FF6240DA43A006073BE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -669,6 +597,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A5MCCQXEVU;
 				INFOPLIST_FILE = SearchfmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -690,6 +619,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A5MCCQXEVU;
 				INFOPLIST_FILE = SearchfmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -702,44 +632,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Searchfm.app/Searchfm";
-			};
-			name = Release;
-		};
-		95DA4005240DA43A006073BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SearchfmUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.softmagic.SearchfmUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Searchfm;
-			};
-			name = Debug;
-		};
-		95DA4006240DA43A006073BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SearchfmUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.softmagic.SearchfmUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Searchfm;
 			};
 			name = Release;
 		};
@@ -769,15 +661,6 @@
 			buildConfigurations = (
 				95DA4002240DA43A006073BE /* Debug */,
 				95DA4003240DA43A006073BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		95DA4004240DA43A006073BE /* Build configuration list for PBXNativeTarget "SearchfmUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				95DA4005240DA43A006073BE /* Debug */,
-				95DA4006240DA43A006073BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
